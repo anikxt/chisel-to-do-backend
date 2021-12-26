@@ -19,9 +19,7 @@ module.exports = {
 
   destroy: async function deleteBoard(req, res) {
     var id = req.body.id;
-    console.log(req.body);
     const output = await Board.destroy({ id: id }).fetch();
-    console.log(output);
     res.send(output);
   },
 };

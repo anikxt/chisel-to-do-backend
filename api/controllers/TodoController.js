@@ -8,14 +8,12 @@
 module.exports = {
   create: async function createTodo(req, res) {
     var todo = req.body;
-    console.log(todo);
     const output = await Todo.create(todo).fetch();
     res.send(output);
   },
 
   update: async function editTodo(req, res) {
     var name = req.body.name;
-    console.log(req.body);
     var isComplete = req.body.isComplete;
     var id = req.body.id;
     const output = await Todo.update({ id: id })
@@ -29,7 +27,7 @@ module.exports = {
 
   destroy: async function deleteTodo(req, res) {
     var id = req.body.id;
-    output = await Todo.destroy({ id: id }).fetch();
+    output = await Todo.destroy({ boardId: id }).fetch();
     res.send(output);
   },
 };
