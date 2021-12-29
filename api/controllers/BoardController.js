@@ -19,7 +19,8 @@ module.exports = {
 
   destroy: async function deleteBoard(req, res) {
     var id = req.body.id;
-    const output = await Board.destroy({ id: id }).fetch();
-    res.send(output);
+    await Board.destroy({ id: id }).fetch();
+    await Todo.destroy({ boardId: id }).fetch();
+    res.sendStatus(200);
   },
 };
